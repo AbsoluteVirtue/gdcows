@@ -13,11 +13,10 @@ func _ready():
 	if _timer.time_left <= 0:
 		_timer.start()
 
-
-func _on_BulletDetector_body_entered(body):
+func _on_BulletDetector_body_entered(_body):
 	get_node("CollisionShape2D").disabled = true
 	queue_free()
+	ScoreRecord.score += 1
 
-
-func _physics_process(delta):
+func _physics_process(_delta):
 	_velocity = move_and_slide(_velocity, Vector2.UP)
