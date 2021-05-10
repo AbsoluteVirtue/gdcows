@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/tile.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Actors/Mob.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/background.jpg" type="Texture" id=4]
 [ext_resource path="res://src/Levels/LevelDeath.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Actors/Coin.tscn" type="PackedScene" id=6]
@@ -98,8 +98,14 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 } ]
 0/z_index = 0
 
+[sub_resource type="Curve2D" id=10]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1024, 0, 0, 0, 0, 0, 1024, 608 )
+}
+
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource( 7 )
+mob_scene = ExtResource( 3 )
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -122,6 +128,15 @@ position = Vector2( 200, 304 )
 next_scene = ExtResource( 5 )
 bullet = ExtResource( 6 )
 
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1984, 304 )
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource( 10 )
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2( 1024, 0 )
+rotation = 1.57081
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
 [connection signal="shoot" from="Player" to="." method="_on_Player_shoot"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
