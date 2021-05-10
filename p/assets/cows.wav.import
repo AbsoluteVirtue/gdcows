@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cows.wav-fbc24c0e4292cab4c37bcf9b28d0a4bf.sample"
+
+[deps]
+
+source_file="res://assets/cows.wav"
+dest_files=[ "res://.import/cows.wav-fbc24c0e4292cab4c37bcf9b28d0a4bf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=true
+compress/mode=0

@@ -10,7 +10,7 @@ load_path = "res://.import/player.png-be2216fcaabb5c62aa2466cd9a5726a8.stex"
 extents = Vector2( 80, 64 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 88, 72 )
+extents = Vector2( 64, 56 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 8
@@ -33,7 +33,7 @@ monitorable = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
-position = Vector2( -80, 32 )
+position = Vector2( -96, 40 )
 shape = SubResource( 3 )
 [connection signal="area_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_area_entered"]
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
